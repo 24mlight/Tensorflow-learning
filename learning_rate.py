@@ -21,7 +21,7 @@ with tf.Session() as sess:
         w_val = sess.run(w)
         loss_val = sess.run(loss)
         print("After %s steps:global_step is %s,w=%f,loss=%f" % 
-             (i,global_step_val,w_val,loss_val)
+             (i,global_step_val,w_val,loss_val)）
 
 #输出结果
 After 0 steps:global_step is 1,w=3.800000,loss=23.040001
