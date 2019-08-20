@@ -1,0 +1,6 @@
+model_checkpoint_path: "E:\\MODEL_SAVE\\mnist_model-77003"
+all_model_checkpoint_paths: "E:\\MODEL_SAVE\\mnist_model-73003"
+all_model_checkpoint_paths: "E:\\MODEL_SAVE\\mnist_model-74003"
+all_model_checkpoint_paths: "E:\\MODEL_SAVE\\mnist_model-75003"
+all_model_checkpoint_paths: "E:\\MODEL_SAVE\\mnist_model-76003"
+all_model_checkpoint_paths: "E:\\MODEL_SAVE\\mnist_model-77003"
