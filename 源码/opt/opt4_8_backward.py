@@ -1,5 +1,4 @@
 #coding:utf-8
-#0导入模块 ，生成模拟数据集
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -27,7 +26,7 @@ def backward():
 		global_step,
 		300/BATCH_SIZE,
 		LEARNING_RATE_DECAY,
-		staircase=True)
+		staircase=True)  
 
 
 	#定义损失函数

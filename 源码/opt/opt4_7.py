@@ -16,12 +16,12 @@ Y_ = [int(x0*x0 + x1*x1 <2) for (x0,x1) in X]
 Y_c = [['red' if y else 'blue'] for y in Y_]
 #对数据集X和标签Y进行shape整理，第一个元素为-1表示，随第二个参数计算得到，第二个元素表示多少列，把X整理为n行2列，把Y整理为n行1列
 X = np.vstack(X).reshape(-1,2)
-Y_ = np.vstack(Y_).reshape(-1,1)
+Y_ = np.vstack(Y_).reshape(-1,1) # Y_本来有 1行300列 ,经过这一行代码之后变成 300行1列
 print X
 print Y_
 print Y_c
 #用plt.scatter画出数据集X各行中第0列元素和第1列元素的点即各行的（x0，x1），用各行Y_c对应的值表示颜色（c是color的缩写） 
-plt.scatter(X[:,0], X[:,1], c=np.squeeze(Y_c)) 
+plt.scatter(X[:,0], X[:,1], c=np.squeeze(Y_c)) # np.squeeze(Y_c) 将值为1的维度删去, Y_从3000行1列(二维)变成了1行300列(一维)
 plt.show()
 
 
@@ -49,7 +49,9 @@ y = tf.matmul(y1, w2)+b2
 
 #定义损失函数
 loss_mse = tf.reduce_mean(tf.square(y-y_))
-loss_total = loss_mse + tf.add_n(tf.get_collection('losses'))
+#  tf.get_collection('losses'):获取集合“losses”中的所有元素，生成一个列表并返回该列表
+#  tf.add_n():求list中元素的累加和，列表里的元素可以是向量，矩阵
+loss_total = loss_mse + tf.add_n(tf.get_collection('losses')) 
 
 
 #定义反向传播方法：不含正则化
@@ -71,7 +73,7 @@ with tf.Session() as sess:
 	#将xx , yy拉直，并合并成一个2列的矩阵，得到一个网格坐标点的集合
 	grid = np.c_[xx.ravel(), yy.ravel()]
 	#将网格坐标点喂入神经网络 ，probs为输出
-	probs = sess.run(y, feed_dict={x:grid})
+	probs = sess.run(y, feed_dict={x:grid}) #训练之后每个坐标点都会有对应的y
 	#probs的shape调整成xx的样子
 	probs = probs.reshape(xx.shape)
 	print "w1:\n",sess.run(w1)

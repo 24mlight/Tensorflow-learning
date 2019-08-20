@@ -1,5 +1,4 @@
 #coding:utf-8
-#0导入模块 ，生成模拟数据集
 import tensorflow as tf
 
 #定义神经网络的输入、参数和输出，定义前向传播过程 
